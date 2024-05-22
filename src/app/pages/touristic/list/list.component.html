@@ -1,0 +1,15 @@
+<section class="attractions-section">
+  @for (attraction of attractions$ | async; track attraction.id) {
+    <div class="card" style="width: 18rem;">
+      <img [src]="attraction.images[0]" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{attraction.name}}</h5>
+        <p class="card-text">{{attraction.description}}</p>
+        <a [routerLink] = "['/details', attraction.id]" class="btn btn-primary">Detalles</a>
+      </div>
+    </div>
+  } @empty {
+    Empty list of attractions
+  }
+
+</section>

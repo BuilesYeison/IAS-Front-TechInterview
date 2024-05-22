@@ -1,0 +1,30 @@
+<section class="form-container">
+  <form [formGroup]="touristForm">
+    <div class="form-group states-group">
+      <label for="state">Departamento:</label>
+      <select class="form-control" id="state" formControlName="state">
+        @for (state of states$ | async; track state.id) {
+          <option [value]="state.id">{{state.name}}</option>
+        } @empty {
+          Empty list of states
+        }
+      </select>
+    </div>
+    <div class="form-group cities-group">
+      <label for="city">Ciudad:</label>
+      <select class="form-control" id="city" formControlName="city">
+        @for (city of cities$ | async; track city.id) {
+          <option [value]="city.id">{{city.name}}</option>
+        } @empty {
+          Empty list of cities
+        }
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="touristPlace" class="form-label">Sitio turistico: </label>
+      <input type="text" class="form-control" formControlName ="touristPlace" id="touristPlace">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+</section>
